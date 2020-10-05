@@ -1,3 +1,5 @@
+![alt text](https://github.com/gurupratap-matharu/awesome-survey/staticfiles/pages/hero.jpg "Hero Banner")
+
 <h1 align="center">Survey</h1>
 
 ## Motivation 🎯
