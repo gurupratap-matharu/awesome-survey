@@ -1,5 +1,5 @@
-![alt text](https://github.com/gurupratap-matharu/awesome-survey/blob/master/staticfiles/pages/hero.jpg "Hero Banner")
 
+<img src="https://github.com/gurupratap-matharu/awesome-survey/blob/master/staticfiles/pages/hero.jpg" alt="drawing" width="1920"/>
 <h1 align="center">Survey</h1>
 
 ## Motivation 🎯
@@ -27,5 +27,3 @@ Note: `docker-compose` is currently only used for production.
 ## License
 
 Licensed under the MIT license.
-
----
