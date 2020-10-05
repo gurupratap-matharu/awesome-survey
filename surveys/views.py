@@ -16,10 +16,15 @@ class SurveyDetail(DetailView):
     template_name = 'surveys/survey_detail.html'
 
 
-class SurveyCreate(LoginRequiredMixin, CreateView):
+class SurveyCreate(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Survey
+    fields = ('title', 'description')
     template_name = 'surveys/survey_form.html'
     success_message = '%(title)s created successfully!'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 
 class SurveyUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
