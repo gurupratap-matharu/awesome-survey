@@ -1,0 +1,74 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ survey.title }}{% endblock title %}
+
+{% block appname %}
+<a href="{{ survey.get_absolute_url }}" class="navbar-brand my-0 font-weight-normal">
+    {{ survey.title|title }}
+</a>
+{% endblock appname %}
+
+{% block navcenter %}
+<nav class="m-auto">
+    <a class="p-2 text-dark text-decoration-none" href="">
+        Stream
+    </a>
+    <a class="p-2 text-dark text-decoration-none" href="">
+        Classwork
+    </a>
+    <a class="p-2 text-dark text-decoration-none" href="">
+        People
+    </a>
+</nav>
+{% endblock navcenter %}
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <div class="d-flex mt-md-n5 mx-md-n2">
+            <a class="ml-auto text-decoration-none text-dark btn btn-outline-light" role="button" id="dropdownMenuLink"
+                aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" href="{{ survey.get_absolute_url }}">
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="" type="button" data-toggle="modal" data-target="#exampleModalCenter">Get
+                    class code</a>
+                {% if user in classroom.students.all %}
+                <a class="dropdown-item" href="" type="button">Un Enroll</a>
+                {% elif user == classroom.created_by %}
+                <a class="dropdown-item" href="" type="button">Delete</a>
+                {% endif %}
+            </div>
+        </div>
+        <h1 class="display-4">{{ survey }}</h1>
+        <p class="lead">{{ survey.description }}</p>
+
+    </div>
+    <p>
+        <a href="#postForm" class="btn btn-light btn-block p-3 text-left" data-toggle="modal" data-target="#postModal"
+            role="button" aria-expanded="false" aria-controls="postForm">
+            <small>Share something with your class!</small>
+        </a>
+    </p>
+
+    {% for post in classroom.posts.all %}
+    <div class="card p-2 mt-3 rounded-lg">
+        <div class="card-header border-bottom-0 bg-white">
+            <div>{{ post.title }}</div>
+            <small class="text-muted">
+                {{ post.author }},
+                {{ post.created_on|date:"j M" }}
+                (Edited {{ post.updated_on.time }})
+            </small>
+        </div>
+        <div class="card-body">
+            {{ post.content }}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% include 'surveys/_survey_modal.html' %}
+{% include 'surveys/_survey_post_modal.html' %}
+{% endblock content %}

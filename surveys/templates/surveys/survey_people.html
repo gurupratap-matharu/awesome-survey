@@ -1,0 +1,49 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ classroom.name }}{% endblock title %}
+
+{% block appname %}
+<a href="{{ classroom.get_absolute_url }}" class="navbar-brand my-0 font-weight-normal">
+    {{ classroom.name|title }}
+</a>
+{% endblock appname %}
+
+{% block navcenter %}
+<nav class="m-auto">
+    <a class="p-2 text-dark text-decoration-none" href="">
+        Stream
+    </a>
+    <a class="p-2 text-dark text-decoration-none" href="">
+        Classwork
+    </a>
+    <a class="p-2 text-dark text-decoration-none" href="{{ classroom.get_people_url }}">
+        People
+    </a>
+</nav>
+{% endblock navcenter %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="mb-5">
+        <div class="d-flex mb-5 justify-content-between align-items-baseline text-primary border-bottom border-primary">
+            <p class="display-4">Teachers</p>
+            <p class="lead">? teachers</p>
+        </div>
+        {{ classroom.created_by }}
+    </div>
+    <hr>
+    <div class="d-flex mb-5 justify-content-between align-items-baseline text-primary border-bottom border-primary">
+        <p class="display-4">Classmates</p>
+        <p class="lead">{{ classroom.students.count }} students</p>
+    </div>
+    {% for student in classroom.students.all %}
+    {{ student }}
+    <hr>
+    {% endfor %}
+</div>
+
+{% include 'classroom/_classroom_modal.html' %}
+{% endblock content %}

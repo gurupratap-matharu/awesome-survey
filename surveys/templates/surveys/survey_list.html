@@ -1,0 +1,60 @@
+{% extends '_base.html' %}
+
+{% block title %}Survey{% endblock title %}
+{% block appname %}Survey{% endblock appname %}
+{% block content %}
+<div class="mb-3">
+    <button type="submit" class="btn btn-light"><i class="fa fa-sticky-note-o fa-lg p-2" aria-hidden="true"></i>
+        <p class="text-primary d-inline">
+            To-do
+        </p>
+    </button>
+    <button type="submit" class="btn btn-light"><i class="fa fa-calendar fa-lg p-2" aria-hidden="true"></i>
+        <p class="text-primary d-inline">
+            Calendar
+        </p>
+    </button>
+</div>
+{% if not survey_list %}
+<div class="d-flex justify-content-center align-items-center" style="height: 500px;">
+    <p class="lead text-justify">Pretty empty over here. Get the classcode from your teacher to enroll into your class!
+    </p>
+</div>
+{% else %}
+<div class="row">
+    {% for survey in survey_list %}
+    <div class="col-12 col-lg-6 col-xl-3">
+        <div class="card rounded-lg shadow mb-3">
+            <div class="card-header d-flex">
+                <a href="{{ survey.get_absolute_url }}" class="text-dark">
+                    <h5 class="font-weight-light">{{ survey.title }}</h5>
+                </a>
+                <a class="ml-auto text-decoration-none text-dark" role="button" id="dropdownMenuLink"
+                    aria-haspopup="true" aria-expanded="false" data-toggle="dropdown"
+                    href="{{ survey.get_absolute_url }}">
+                    <i class="fa fa-ellipsis-v fa-sm" aria-hidden="true"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="" type="button">Report Abuse</a>
+
+                </div>
+            </div>
+            <img src="" alt="" class="card-img-top">
+            <div class="card-body">
+                <p class="card-text font-weight-light">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This content is a little bit longer.
+                </p>
+            </div>
+            <div class="card-footer bg-white d-flex justify-content-end">
+                <button type="submit" class="btn btn-light btn-sm ml-2"><i class="fa fa-user-o"
+                        aria-hidden="true"></i></button>
+                <button type="submit" class="btn btn-light btn-sm ml-2"><i class="fa fa-folder-o"
+                        aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock content %}
