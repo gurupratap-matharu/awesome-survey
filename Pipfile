@@ -1,0 +1,22 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+autopep8 = "*"
+
+[packages]
+django = "==3.1"
+psycopg2 = "==2.8.6"
+gunicorn = "*"
+whitenoise = "*"
+django-allauth = "==0.42"
+django-extensions = "*"
+dj-database-url = "*"
+django-crispy-forms = "*"
+factory-boy = "*"
+
+[requires]
+python_version = "3.8"
