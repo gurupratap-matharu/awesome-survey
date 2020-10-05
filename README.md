@@ -1,4 +1,4 @@
-![alt text](https://github.com/gurupratap-matharu/awesome-survey/staticfiles/pages/hero.jpg "Hero Banner")
+![alt text](https://github.com/gurupratap-matharu/awesome-survey/blob/master/staticfiles/pages/hero.jpg "Hero Banner")
 
 <h1 align="center">Survey</h1>
 
