@@ -1,10 +1,10 @@
-{% extends 'classroom/_classroom_base.html' %}
+{% extends 'surveys/_survey_base.html' %}
 {% load crispy_forms_tags %}
 {% block title %}Update{% endblock title %}
-{% block appname %}{{ classroom.name|title }}{% endblock appname %}
+{% block appname %}{{ survey.name|title }}{% endblock appname %}
 {% block content %}
 <div class="container">
-    <a href="{{ classroom.get_absolute_url }}" class="text-dark text-decoration-none">
+    <a href="{{ survey.get_absolute_url }}" class="text-dark text-decoration-none">
         <div class="d-flex">
             <i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>
             <p class="lead ml-2">Back</p>
