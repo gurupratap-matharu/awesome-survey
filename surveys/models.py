@@ -39,3 +39,14 @@ class Survey(models.Model):
 
     def can_delete(self, user):
         return user.is_superuser or self.author == user
+
+
+class Question(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    question_text = models.CharField(max_length=200)
+
+    survey = models.ForeignKey(Survey, on_delete=models.CASCADE, related_name='questions')
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.question_text
