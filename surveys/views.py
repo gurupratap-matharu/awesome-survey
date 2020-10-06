@@ -1,3 +1,5 @@
+import logging
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
@@ -5,10 +7,15 @@ from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
 
 from surveys.models import Survey
 
+logger = logging.getLogger(__name__)
 
-class SurveyList(ListView):
+
+class SurveyList(LoginRequiredMixin, ListView):
     model = Survey
     template_name = 'surveys/survey_list.html'
+
+    def get_queryset(self):
+        return self.model.objects.filter(author=self.request.user)
 
 
 class SurveyDetail(DetailView):
