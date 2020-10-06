@@ -2,6 +2,7 @@ import logging
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.urls import reverse_lazy
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
 
@@ -44,3 +45,4 @@ class SurveyDelete(LoginRequiredMixin, DeleteView):
     model = Survey
     template_name = 'surveys/survey_confirm_delete.html'
     success_message = '%s(title) deleted successfully!'
+    success_url = reverse_lazy('pages:home')
