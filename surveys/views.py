@@ -73,7 +73,7 @@ class SurveyDelete(LoginRequiredMixin, DeleteView):
     model = Survey
     template_name = 'surveys/survey_confirm_delete.html'
     success_message = 'Survey deleted successfully!'
-    success_url = reverse_lazy('pages:home')
+    success_url = reverse_lazy('survey_list')
 
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)
